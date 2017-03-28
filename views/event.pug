@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  div(id='main')
+    div(class='inner')
+
+      header(id='header')
+        h1= title       
+
+      section(id='banner')
+        div(class='content')
+          header
+            p= 'détails de l\'événement : ' + eventlist[0].name
+              ul
+                li Nom : 
+                  = eventlist[0].name
+                li Type : 
+                  = eventlist[0].type
+                li Date de début: 
+                  = eventlist[0].date
+                li Date d'ajout de l'événement:
+                  = eventlist[0].dateAdd  
+                li Nombre de jour(s) : 
+                  = eventlist[0].days + "j"
+                    
+              table
+                tr
+                  td Rôle(s) demandé(s)
+                  td Nombre(s) demandé(s)
+                  td Supprimer
+                each offre, i in offrelist
+                  tr
+                    td
+                      = offre.nameRole.name
+                    td
+                      = offre.nbRole
+                    td
+                      form#deleteRole(name='remove-role', method='post', action='/events/role/delete/'+offre.nameRole._id)
+                        input(type='hidden', name ='_method', value='delete')
+                        input(type='hidden', name ='id', value = offre.nameRole._id) 
+                        button#supprimer(type="submit") Supprimer
+                  
+
+                          
+          form#formAddUser(name="addrole",method="post",action="/insertevent/"+eventlist[0]._id+"/addrole")
+            input#inputEventRole(type="text", placeholder="Rôle", name="role")
+            input#inputEventNbRole(type="text", placeholder="Nombre", name="nbRole")
+            br
+            button#btnSubmit(type="submit") Valider 
+
+          form(name='remove-event', method='post', action='/events/'+id+'/delete')
+            input(type='hidden', name ='_method', value='delete')
+            input(type='hidden', name ='id', value = id) 
+            button(type="submit") Supprimer l'événement 
+                  

@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  div(id='main')
+    div(class='inner')
+
+      header(id='header')
+        h1= title       
+
+      section(id='banner')
+        div(class='content')
+          header
+            
+          table
+              tr
+                td Nom
+                td Prénom
+                td Email
+                td Supprimer
+              each user, i in userlist
+                tr
+                  td
+                    = user.name
+                  td
+                    = user.firstname
+                  td
+                    = user.mail
+                  td
+                    a(onclick="return confirm_click();" href='/users/delete/'+user._id)  Supprimer

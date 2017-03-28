@@ -1,0 +1,43 @@
+doctype html
+html(lang='fr')
+  head
+    title= title
+    link(rel='stylesheet', href='/assets/css/main.css')
+    link(rel='stylesheet', href='/assets/css/custom.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1',user-scalable='no')
+    meta(charset='utf-8')
+  body
+    div(id='wrapper')
+      block content
+      div(id='sidebar')
+        div(class='inner')
+
+        nav(id='menu')
+          header(class='major')
+            h2= 'Menu'
+
+          ul
+            li
+              a(href='/') Accueil
+            li
+              a(href='/users') Liste des figurants
+            li
+              a(href='/insert') Insertion d'un figurant
+            li
+              a(href='/events') Liste des événements
+            li
+              a(href='/insertevent') Insertion d'un événement
+        
+        footer(id='footer')
+          p(class='copyright')= 'BTS SIO SLAM.'
+
+    script(type='text/javascript').
+      function confirm_click()
+        {
+          return confirm("Êtes-vous sûr(e) de voulour supprimer cet utilisateur ?");
+        }
+     
+    script(src='/assets/js/jquery.min.js')
+    script(src='/assets/js/skel.min.js')
+    script(src='/assets/js/util.js')
+    script(src='/assets/js/main.js')

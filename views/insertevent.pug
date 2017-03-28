@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div(id='main')
+    div(class='inner')
+
+      header(id='header')
+        h1= title       
+
+      section(id='banner')
+        div(class='content')
+          header
+            h2= 'Formulaire'
+          form#formAddUser(name="addevent",method="post",action="/insertevent/addevent")
+            input#inputEventName(type="text", placeholder="Nom", name="name")
+            input#inputEventType(type="text", placeholder="Type", name="type")
+            input#inputEventDate(type="text", placeholder="Date de début ", name="date")
+            input#inputEventDays(type="text", placeholder="Durée (en jours)", name="days")
+            br
+            button#btnSubmit(type="submit") Valider
+
